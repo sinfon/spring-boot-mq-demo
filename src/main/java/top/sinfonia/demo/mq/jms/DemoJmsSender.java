@@ -1,7 +1,6 @@
 package top.sinfonia.demo.mq.jms;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
@@ -10,16 +9,15 @@ import org.springframework.stereotype.Component;
  * @date 2018/6/22
  */
 @Component
-public class DemoCommandLineRunner implements CommandLineRunner {
+public class DemoJmsSender {
     private JmsTemplate jmsTemplate;
 
     @Autowired
-    public DemoCommandLineRunner(JmsTemplate jmsTemplate) {
+    public DemoJmsSender(JmsTemplate jmsTemplate) {
         this.jmsTemplate = jmsTemplate;
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        jmsTemplate.send(DemoJmsConstants.JMS_LISTENER_DESTINATION_APP_START, new DemoMessageCreator(args));
+    public void sendToDemoJmsListener(String... message) {
+        jmsTemplate.send(DemoJmsConstants.JMS_LISTENER_DESTINATION_DEMO, new DemoMessageCreator(message));
     }
 }

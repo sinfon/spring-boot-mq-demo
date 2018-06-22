@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import top.sinfonia.demo.mq.jms.DemoCommandLineRunner;
 import top.sinfonia.demo.mq.jms.DemoJmsConstants;
+import top.sinfonia.demo.mq.jms.DemoJmsSender;
 
 /**
  * @author singoasher
@@ -19,11 +19,11 @@ import top.sinfonia.demo.mq.jms.DemoJmsConstants;
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
-    private DemoCommandLineRunner demoCommandLineRunner;
+    private DemoJmsSender demoJmsSender;
 
     @Autowired
-    public DemoController(DemoCommandLineRunner demoCommandLineRunner) {
-        this.demoCommandLineRunner = demoCommandLineRunner;
+    public DemoController(DemoJmsSender demoJmsSender) {
+        this.demoJmsSender = demoJmsSender;
     }
 
     @GetMapping("/jms")
@@ -33,7 +33,7 @@ public class DemoController {
             message = DemoJmsConstants.JMS_LISTENER_DEFAULT_MESSAGE;
         }
         log.info("message to be sent: {}", message);
-        demoCommandLineRunner.run(message);
+        demoJmsSender.sendToDemoJmsListener(message);
         log.info("message sent: {}", message);
         return ResponseEntity.accepted().body(message);
     }

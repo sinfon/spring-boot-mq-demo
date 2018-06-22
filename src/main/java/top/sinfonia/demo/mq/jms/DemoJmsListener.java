@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class DemoListener {
+public class DemoJmsListener {
     private static final Long DEFAULT_SLEEP = 3_000L;
 
     @JmsListener(destination = DemoJmsConstants.JMS_LISTENER_DESTINATION_DEMO)
@@ -19,5 +19,10 @@ public class DemoListener {
         Thread.sleep(DEFAULT_SLEEP);
         log.info("Demo Sleep End");
         log.info("Demo listener, receive message: {}", message);
+    }
+
+    @JmsListener(destination = DemoJmsConstants.JMS_LISTENER_DESTINATION_APP_START)
+    public void appStartListener(String message) throws InterruptedException {
+        log.info("App Start listener, receive message (app main args): {}", message);
     }
 }
