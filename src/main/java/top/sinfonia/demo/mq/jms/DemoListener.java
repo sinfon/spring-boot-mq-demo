@@ -11,8 +11,13 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class DemoListener {
+    private static final Long DEFAULT_SLEEP = 3_000L;
+
     @JmsListener(destination = DemoJmsConstants.JMS_LISTENER_DESTINATION_DEMO)
-    public void demoListener(String message) {
+    public void demoListener(String message) throws InterruptedException {
+        log.info("Demo Sleep");
+        Thread.sleep(DEFAULT_SLEEP);
+        log.info("Demo Sleep End");
         log.info("Demo listener, receive message: {}", message);
     }
 }
