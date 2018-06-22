@@ -15,10 +15,10 @@ public class DemoJmsListener {
 
     @JmsListener(destination = DemoJmsConstants.JMS_LISTENER_DESTINATION_DEMO)
     public void demoListener(String message) throws InterruptedException {
-        log.info("Demo Sleep");
+        log.info("Demo Jms Sleep");
         Thread.sleep(DEFAULT_SLEEP);
-        log.info("Demo Sleep End");
-        log.info("Demo listener, receive message: {}", message);
+        log.info("Demo Jms Sleep End");
+        log.info("Demo Jms Listener, receive message: {}", message);
     }
 
     @JmsListener(destination = DemoJmsConstants.JMS_LISTENER_DESTINATION_APP_START)

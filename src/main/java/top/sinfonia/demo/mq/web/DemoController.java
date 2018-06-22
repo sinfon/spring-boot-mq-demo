@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import top.sinfonia.demo.mq.infrastructure.constant.DemoConstants;
 import top.sinfonia.demo.mq.jms.DemoJmsConstants;
 import top.sinfonia.demo.mq.jms.DemoJmsSender;
+import top.sinfonia.demo.mq.rabbit.DemoRabbitSender;
 
 /**
  * @author singoasher
@@ -20,20 +22,23 @@ import top.sinfonia.demo.mq.jms.DemoJmsSender;
 @RequestMapping("/demo")
 public class DemoController {
     private DemoJmsSender demoJmsSender;
+    private DemoRabbitSender demoRabbitSender;
 
     @Autowired
-    public DemoController(DemoJmsSender demoJmsSender) {
+    public DemoController(DemoJmsSender demoJmsSender, DemoRabbitSender demoRabbitSender) {
         this.demoJmsSender = demoJmsSender;
+        this.demoRabbitSender = demoRabbitSender;
     }
 
-    @GetMapping("/jms")
-    public ResponseEntity<String> sendToJmsListener(@RequestParam(required = false) String message) throws Exception {
+    @GetMapping
+    public ResponseEntity<String> sendToDemoListener(@RequestParam(required = false) String message) throws Exception {
         log.info("message: {}", message);
         if (!StringUtils.hasText(message)) {
-            message = DemoJmsConstants.JMS_LISTENER_DEFAULT_MESSAGE;
+            message = DemoConstants.DEFAULT_MESSAGE;
         }
         log.info("message to be sent: {}", message);
         demoJmsSender.sendToDemoJmsListener(message);
+        demoRabbitSender.sendToDemoRabbitListener(message);
         log.info("message sent: {}", message);
         return ResponseEntity.accepted().body(message);
     }
