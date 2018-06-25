@@ -47,4 +47,9 @@ public class DemoListener {
     public void rabbitUserQueueListener(User user) {
         log.info("DemoListener ... ... rabbitUserQueueListener, User: {}", JsonUtil.stringfy(user));
     }
+
+    @RabbitListener(queues = DemoConstants.RABBIT_TOPIC_DEMO_QUEUE)
+    public void rabbitTopicDemoQueueListener(User user) {
+        log.info("DemoListener ... ... rabbitTopicDemoQueueListener, User: {}", JsonUtil.stringfy(user));
+    }
 }

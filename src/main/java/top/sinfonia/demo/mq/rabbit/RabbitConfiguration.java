@@ -1,6 +1,9 @@
 package top.sinfonia.demo.mq.rabbit;
 
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.TopicExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import top.sinfonia.demo.mq.infrastructure.constant.DemoConstants;
@@ -19,5 +22,20 @@ public class RabbitConfiguration {
     @Bean
     public Queue rabbitUserQueue() {
         return new Queue(DemoConstants.RABBIT_USER_QUEUE);
+    }
+
+    @Bean
+    public Queue rabbitTopicDemoQueue() {
+        return new Queue(DemoConstants.RABBIT_TOPIC_DEMO_QUEUE);
+    }
+
+    @Bean
+    public TopicExchange rabbitTopicDemoExchange() {
+        return new TopicExchange(DemoConstants.RABBIT_TOPIC_DEMO_EXCHANGE);
+    }
+
+    @Bean
+    public Binding rabbitDemoBinding(Queue rabbitTopicDemoQueue, TopicExchange topicExchange) {
+        return BindingBuilder.bind(rabbitTopicDemoQueue).to(topicExchange).with(DemoConstants.RABBIT_TOPIC_DEMO_QUEUE);
     }
 }

@@ -50,6 +50,7 @@ public class DemoController {
     @GetMapping("/user")
     public ResponseEntity<User> user(User user) {
         demoRabbitSender.send(user);
+        demoRabbitSender.sendToDemoTopicExchange(user);
         return ResponseEntity.accepted().body(user);
     }
 }

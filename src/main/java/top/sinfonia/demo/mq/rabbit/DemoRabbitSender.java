@@ -26,4 +26,8 @@ public class DemoRabbitSender {
     public void send(User user) {
         rabbitTemplate.convertAndSend(DemoConstants.RABBIT_USER_QUEUE, user);
     }
+
+    public void sendToDemoTopicExchange(User user) {
+        rabbitTemplate.convertAndSend(DemoConstants.RABBIT_TOPIC_DEMO_EXCHANGE, DemoConstants.RABBIT_TOPIC_DEMO_QUEUE, user);
+    }
 }

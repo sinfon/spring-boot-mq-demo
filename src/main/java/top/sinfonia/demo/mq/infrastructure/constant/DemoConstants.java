@@ -11,4 +11,7 @@ public class DemoConstants {
     public static final String JMS_LISTENER_DESTINATION_DEMO = "demo-jms-listener";
     public static final String RABBIT_LISTENER_DESTINATION_DEMO = "demo-rabbit-listener";
     public static final String RABBIT_USER_QUEUE = "rabbit-user-queue";
+
+    public static final String RABBIT_TOPIC_DEMO_EXCHANGE = "rabbit.topic.demo.exchange";
+    public static final String RABBIT_TOPIC_DEMO_QUEUE = "rabbit.topic.demo.queue";
 }
