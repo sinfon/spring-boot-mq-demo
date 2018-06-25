@@ -25,13 +25,23 @@ public class RabbitConfiguration {
     }
 
     @Bean
-    public Queue rabbitTopicDemoQueue() {
-        return new Queue(DemoConstants.RABBIT_TOPIC_DEMO_QUEUE);
+    public Queue rabbitTopicDemo1Queue1() {
+        return new Queue(DemoConstants.RABBIT_TOPIC_DEMO1_QUEUE1);
     }
 
     @Bean
-    public Queue rabbitTopicDemo2Queue() {
-        return new Queue(DemoConstants.RABBIT_TOPIC_DEMO2_QUEUE);
+    public Queue rabbitTopicDemo1Queue2() {
+        return new Queue(DemoConstants.RABBIT_TOPIC_DEMO1_QUEUE2);
+    }
+
+    @Bean
+    public Queue rabbitTopicDemo2Queue1() {
+        return new Queue(DemoConstants.RABBIT_TOPIC_DEMO2_QUEUE1);
+    }
+
+    @Bean
+    public Queue rabbitTopicDemo2Queue2() {
+        return new Queue(DemoConstants.RABBIT_TOPIC_DEMO2_QUEUE2);
     }
 
     @Bean
@@ -40,12 +50,22 @@ public class RabbitConfiguration {
     }
 
     @Bean
-    public Binding rabbitDemoBinding(Queue rabbitTopicDemoQueue, TopicExchange topicExchange) {
-        return BindingBuilder.bind(rabbitTopicDemoQueue).to(topicExchange).with(DemoConstants.RABBIT_TOPIC_DEMO_ROUTING_KEY);
+    public Binding rabbitDemo1Queue1Binding(Queue rabbitTopicDemo1Queue1, TopicExchange topicExchange) {
+        return BindingBuilder.bind(rabbitTopicDemo1Queue1).to(topicExchange).with(DemoConstants.RABBIT_TOPIC_DEMO1_ROUTING_KEY);
     }
 
     @Bean
-    public Binding rabbitDemo2Binding(Queue rabbitTopicDemo2Queue, TopicExchange topicExchange) {
-        return BindingBuilder.bind(rabbitTopicDemo2Queue).to(topicExchange).with(DemoConstants.RABBIT_TOPIC_DEMO_ROUTING_KEY);
+    public Binding rabbitDemo1Queue2Binding(Queue rabbitTopicDemo1Queue2, TopicExchange topicExchange) {
+        return BindingBuilder.bind(rabbitTopicDemo1Queue2).to(topicExchange).with(DemoConstants.RABBIT_TOPIC_DEMO1_ROUTING_KEY);
+    }
+
+    @Bean
+    public Binding rabbitDemo2Queue1Binding(Queue rabbitTopicDemo2Queue1, TopicExchange topicExchange) {
+        return BindingBuilder.bind(rabbitTopicDemo2Queue1).to(topicExchange).with(DemoConstants.RABBIT_TOPIC_DEMO2_ROUTING_KEY);
+    }
+
+    @Bean
+    public Binding rabbitDemo2Queue2Binding(Queue rabbitTopicDemo2Queue2, TopicExchange topicExchange) {
+        return BindingBuilder.bind(rabbitTopicDemo2Queue2).to(topicExchange).with(DemoConstants.RABBIT_TOPIC_DEMO2_ROUTING_KEY);
     }
 }

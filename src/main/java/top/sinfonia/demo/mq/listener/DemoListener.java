@@ -48,13 +48,23 @@ public class DemoListener {
         log.info("DemoListener ... ... rabbitUserQueueListener, User: {}", JsonUtil.stringfy(user));
     }
 
-    @RabbitListener(queues = DemoConstants.RABBIT_TOPIC_DEMO_QUEUE)
-    public void rabbitTopicDemoQueueListener(User user) {
-        log.info("DemoListener ... ... rabbitTopicDemoQueueListener, User: {}", JsonUtil.stringfy(user));
+    @RabbitListener(queues = DemoConstants.RABBIT_TOPIC_DEMO1_QUEUE1)
+    public void rabbitTopicDemo1Queue1Listener(User user) {
+        log.info("DemoListener ... ... rabbitTopicDemo1Queue1Listener, User: {}", JsonUtil.stringfy(user));
     }
 
-    @RabbitListener(queues = DemoConstants.RABBIT_TOPIC_DEMO2_QUEUE)
-    public void rabbitTopicDemo2QueueListener(User user) {
-        log.info("DemoListener ... ... rabbitTopicDemo2QueueListener, User: {}", JsonUtil.stringfy(user));
+    @RabbitListener(queues = DemoConstants.RABBIT_TOPIC_DEMO1_QUEUE2)
+    public void rabbitTopicDemo1Queue2Listener(User user) {
+        log.info("DemoListener ... ... rabbitTopicDemo1Queue2Listener, User: {}", JsonUtil.stringfy(user));
+    }
+
+    @RabbitListener(queues = DemoConstants.RABBIT_TOPIC_DEMO2_QUEUE1)
+    public void rabbitTopicDemo2Queue1Listener(User user) {
+        log.info("DemoListener ... ... rabbitTopicDemo2Queue1Listener, User: {}", JsonUtil.stringfy(user));
+    }
+
+    @RabbitListener(queues = DemoConstants.RABBIT_TOPIC_DEMO2_QUEUE2)
+    public void rabbitTopicDemo2Queue2Listener(User user) {
+        log.info("DemoListener ... ... rabbitTopicDemo2Queue2Listener, User: {}", JsonUtil.stringfy(user));
     }
 }

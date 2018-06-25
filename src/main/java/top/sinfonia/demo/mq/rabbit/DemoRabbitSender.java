@@ -27,7 +27,11 @@ public class DemoRabbitSender {
         rabbitTemplate.convertAndSend(DemoConstants.RABBIT_USER_QUEUE, user);
     }
 
-    public void sendToDemoTopicExchange(User user) {
-        rabbitTemplate.convertAndSend(DemoConstants.RABBIT_TOPIC_DEMO_EXCHANGE, DemoConstants.RABBIT_TOPIC_DEMO_ROUTING_KEY, user);
+    public void sendToTopicDemo1(User user) {
+        rabbitTemplate.convertAndSend(DemoConstants.RABBIT_TOPIC_DEMO_EXCHANGE, DemoConstants.RABBIT_TOPIC_DEMO1_ROUTING_KEY, user);
+    }
+
+    public void sendToTopicDemo2(User user) {
+        rabbitTemplate.convertAndSend(DemoConstants.RABBIT_TOPIC_DEMO_EXCHANGE, DemoConstants.RABBIT_TOPIC_DEMO2_ROUTING_KEY, user);
     }
 }

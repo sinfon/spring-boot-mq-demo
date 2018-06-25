@@ -4,10 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import top.sinfonia.demo.mq.amqp.DemoAmqpSender;
 import top.sinfonia.demo.mq.domain.model.User;
 import top.sinfonia.demo.mq.infrastructure.constant.DemoConstants;
@@ -47,10 +44,20 @@ public class DemoController {
         return ResponseEntity.accepted().body(message);
     }
 
-    @GetMapping("/user")
-    public ResponseEntity<User> user(User user) {
+    @GetMapping("/user/{number}")
+    public ResponseEntity<User> user(@PathVariable Integer number, User user) {
         demoRabbitSender.send(user);
-        demoRabbitSender.sendToDemoTopicExchange(user);
+        if (number != null) {
+            switch (number) {
+                case 1:
+                    demoRabbitSender.sendToTopicDemo1(user);
+                    break;
+                case 2:
+                    demoRabbitSender.sendToTopicDemo2(user);
+                    break;
+                default:
+            }
+        }
         return ResponseEntity.accepted().body(user);
     }
 }
