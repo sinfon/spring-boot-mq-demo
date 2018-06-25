@@ -3,6 +3,7 @@ package top.sinfonia.demo.mq.rabbit;
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import top.sinfonia.demo.mq.infrastructure.constant.DemoConstants;
 
 /**
  * @author singoasher
@@ -10,8 +11,13 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class RabbitConfiguration {
-    @Bean("demo-rabbit-queue")
+    @Bean
     public Queue demoRabbitQueue() {
-        return new Queue(DemoRabbitConstants.RABBIT_LISTENER_DESTINATION_DEMO);
+        return new Queue(DemoConstants.RABBIT_LISTENER_DESTINATION_DEMO);
+    }
+
+    @Bean
+    public Queue rabbitUserQueue() {
+        return new Queue(DemoConstants.RABBIT_USER_QUEUE);
     }
 }

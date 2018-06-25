@@ -10,4 +10,5 @@ public class DemoConstants {
     public static final String JMS_LISTENER_DESTINATION_APP_START = "app-start-jms-listener";
     public static final String JMS_LISTENER_DESTINATION_DEMO = "demo-jms-listener";
     public static final String RABBIT_LISTENER_DESTINATION_DEMO = "demo-rabbit-listener";
+    public static final String RABBIT_USER_QUEUE = "rabbit-user-queue";
 }

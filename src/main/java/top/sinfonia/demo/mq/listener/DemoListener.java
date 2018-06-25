@@ -4,7 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
+import top.sinfonia.demo.mq.domain.model.User;
 import top.sinfonia.demo.mq.infrastructure.constant.DemoConstants;
+import top.sinfonia.demo.mq.infrastructure.util.JsonUtil;
 
 /**
  * @author singoasher
@@ -39,5 +41,10 @@ public class DemoListener {
         log.info("DemoListener ... ... amqpDemoLister sleep start");
         Thread.sleep(DEFAULT_SLEEP);
         log.info("DemoListener ... ... amqpDemoLister sleep end, receive message: {}", message);
+    }
+
+    @RabbitListener(queues = DemoConstants.RABBIT_USER_QUEUE)
+    public void rabbitUserQueueListener(User user) {
+        log.info("DemoListener ... ... rabbitUserQueueListener, User: {}", JsonUtil.stringfy(user));
     }
 }

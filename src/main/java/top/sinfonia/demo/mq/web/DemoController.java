@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import top.sinfonia.demo.mq.amqp.DemoAmqpSender;
+import top.sinfonia.demo.mq.domain.model.User;
 import top.sinfonia.demo.mq.infrastructure.constant.DemoConstants;
 import top.sinfonia.demo.mq.jms.DemoJmsSender;
 import top.sinfonia.demo.mq.rabbit.DemoRabbitSender;
@@ -44,5 +45,11 @@ public class DemoController {
         demoAmqpSender.send(message);
         log.info("message sent: {}", message);
         return ResponseEntity.accepted().body(message);
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<User> user(User user) {
+        demoRabbitSender.send(user);
+        return ResponseEntity.accepted().body(user);
     }
 }
