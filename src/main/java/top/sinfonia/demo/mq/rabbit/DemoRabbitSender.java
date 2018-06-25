@@ -3,6 +3,7 @@ package top.sinfonia.demo.mq.rabbit;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import top.sinfonia.demo.mq.infrastructure.constant.DemoConstants;
 
 /**
  * @author singoasher
@@ -18,6 +19,6 @@ public class DemoRabbitSender {
     }
 
     public void sendToDemoRabbitListener(String message) {
-        rabbitTemplate.convertAndSend(DemoRabbitConstants.RABBIT_LISTENER_DESTINATION_DEMO, message);
+        rabbitTemplate.convertAndSend(DemoConstants.RABBIT_LISTENER_DESTINATION_DEMO, message);
     }
 }

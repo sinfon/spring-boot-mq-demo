@@ -17,7 +17,6 @@ public class DemoRabbitListener {
     public void demoListener(String message) throws InterruptedException {
         log.info("Demo Rabbit Sleep");
         Thread.sleep(DEFAULT_SLEEP);
-        log.info("Demo Rabbit Sleep End");
         log.info("Demo Rabbit Listener, receive message: {}", message);
     }
 }

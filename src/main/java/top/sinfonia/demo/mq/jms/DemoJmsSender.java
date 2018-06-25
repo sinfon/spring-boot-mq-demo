@@ -3,6 +3,7 @@ package top.sinfonia.demo.mq.jms;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
+import top.sinfonia.demo.mq.infrastructure.constant.DemoConstants;
 
 /**
  * @author singoasher
@@ -18,6 +19,6 @@ public class DemoJmsSender {
     }
 
     public void sendToDemoJmsListener(String... message) {
-        jmsTemplate.send(DemoJmsConstants.JMS_LISTENER_DESTINATION_DEMO, new DemoMessageCreator(message));
+        jmsTemplate.send(DemoConstants.JMS_LISTENER_DESTINATION_DEMO, new DemoMessageCreator(message));
     }
 }
