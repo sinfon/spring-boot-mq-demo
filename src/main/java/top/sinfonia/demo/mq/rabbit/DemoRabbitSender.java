@@ -34,4 +34,8 @@ public class DemoRabbitSender {
     public void sendToTopicDemo2(User user) {
         rabbitTemplate.convertAndSend(DemoConstants.RABBIT_TOPIC_DEMO_EXCHANGE, DemoConstants.RABBIT_TOPIC_DEMO2_ROUTING_KEY, user);
     }
+
+    public void sentToFanoutDemo(User user) {
+        rabbitTemplate.convertAndSend(DemoConstants.RABBIT_FANOUT_DEMO_EXCHANGE, null, user);
+    }
 }

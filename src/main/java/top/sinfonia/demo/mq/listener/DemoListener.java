@@ -67,4 +67,24 @@ public class DemoListener {
     public void rabbitTopicDemo2Queue2Listener(User user) {
         log.info("DemoListener ... ... rabbitTopicDemo2Queue2Listener, User: {}", JsonUtil.stringfy(user));
     }
+
+    @RabbitListener(queues = DemoConstants.RABBIT_FANOUT_DEMO1_QUEUE1)
+    public void rabbitFanoutDemo1Queue1Listener(User user) {
+        log.info("DemoListener ... ... rabbitFanoutDemo1Queue1Listener, User: {}", JsonUtil.stringfy(user));
+    }
+
+    @RabbitListener(queues = DemoConstants.RABBIT_FANOUT_DEMO1_QUEUE2)
+    public void rabbitFanoutDemo1Queue2Listener(User user) {
+        log.info("DemoListener ... ... rabbitFanoutDemo1Queue2Listener, User: {}", JsonUtil.stringfy(user));
+    }
+
+    @RabbitListener(queues = DemoConstants.RABBIT_FANOUT_DEMO2_QUEUE1)
+    public void rabbitFanoutDemo2Queue1Listener(User user) {
+        log.info("DemoListener ... ... rabbitFanoutDemo2Queue1Listener, User: {}", JsonUtil.stringfy(user));
+    }
+
+    @RabbitListener(queues = DemoConstants.RABBIT_FANOUT_DEMO2_QUEUE2)
+    public void rabbitFanoutDemo2Queue2Listener(User user) {
+        log.info("DemoListener ... ... rabbitFanoutDemo2Queue2Listener, User: {}", JsonUtil.stringfy(user));
+    }
 }

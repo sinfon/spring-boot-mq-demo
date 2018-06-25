@@ -19,4 +19,12 @@ public class DemoConstants {
     public static final String RABBIT_TOPIC_DEMO2_ROUTING_KEY = "rabbit.topic.demo2.route";
     public static final String RABBIT_TOPIC_DEMO2_QUEUE1 = "rabbit.topic.demo2.queue1";
     public static final String RABBIT_TOPIC_DEMO2_QUEUE2 = "rabbit.topic.demo2.queue2";
+
+    public static final String RABBIT_FANOUT_DEMO_EXCHANGE = "rabbit.fanout.demo.exchange";
+    public static final String RABBIT_FANOUT_DEMO1_ROUTING_KEY = "rabbit.fanout.demo1.route";
+    public static final String RABBIT_FANOUT_DEMO1_QUEUE1 = "rabbit.fanout.demo1.queue1";
+    public static final String RABBIT_FANOUT_DEMO1_QUEUE2 = "rabbit.fanout.demo1.queue2";
+    public static final String RABBIT_FANOUT_DEMO2_ROUTING_KEY = "rabbit.fanout.demo2.route";
+    public static final String RABBIT_FANOUT_DEMO2_QUEUE1 = "rabbit.fanout.demo2.queue1";
+    public static final String RABBIT_FANOUT_DEMO2_QUEUE2 = "rabbit.fanout.demo2.queue2";
 }

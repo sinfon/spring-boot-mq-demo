@@ -58,6 +58,7 @@ public class DemoController {
                 default:
             }
         }
+        demoRabbitSender.sentToFanoutDemo(user);
         return ResponseEntity.accepted().body(user);
     }
 }
