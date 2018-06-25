@@ -28,6 +28,6 @@ public class DemoRabbitSender {
     }
 
     public void sendToDemoTopicExchange(User user) {
-        rabbitTemplate.convertAndSend(DemoConstants.RABBIT_TOPIC_DEMO_EXCHANGE, DemoConstants.RABBIT_TOPIC_DEMO_QUEUE, user);
+        rabbitTemplate.convertAndSend(DemoConstants.RABBIT_TOPIC_DEMO_EXCHANGE, DemoConstants.RABBIT_TOPIC_DEMO_ROUTING_KEY, user);
     }
 }

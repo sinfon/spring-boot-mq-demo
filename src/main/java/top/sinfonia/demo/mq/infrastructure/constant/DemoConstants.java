@@ -13,5 +13,7 @@ public class DemoConstants {
     public static final String RABBIT_USER_QUEUE = "rabbit-user-queue";
 
     public static final String RABBIT_TOPIC_DEMO_EXCHANGE = "rabbit.topic.demo.exchange";
+    public static final String RABBIT_TOPIC_DEMO_ROUTING_KEY = "rabbit.topic.demo.route";
     public static final String RABBIT_TOPIC_DEMO_QUEUE = "rabbit.topic.demo.queue";
+    public static final String RABBIT_TOPIC_DEMO2_QUEUE = "rabbit.topic.demo2.queue";
 }

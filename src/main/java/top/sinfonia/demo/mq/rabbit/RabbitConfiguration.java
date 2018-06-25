@@ -30,12 +30,22 @@ public class RabbitConfiguration {
     }
 
     @Bean
+    public Queue rabbitTopicDemo2Queue() {
+        return new Queue(DemoConstants.RABBIT_TOPIC_DEMO2_QUEUE);
+    }
+
+    @Bean
     public TopicExchange rabbitTopicDemoExchange() {
         return new TopicExchange(DemoConstants.RABBIT_TOPIC_DEMO_EXCHANGE);
     }
 
     @Bean
     public Binding rabbitDemoBinding(Queue rabbitTopicDemoQueue, TopicExchange topicExchange) {
-        return BindingBuilder.bind(rabbitTopicDemoQueue).to(topicExchange).with(DemoConstants.RABBIT_TOPIC_DEMO_QUEUE);
+        return BindingBuilder.bind(rabbitTopicDemoQueue).to(topicExchange).with(DemoConstants.RABBIT_TOPIC_DEMO_ROUTING_KEY);
+    }
+
+    @Bean
+    public Binding rabbitDemo2Binding(Queue rabbitTopicDemo2Queue, TopicExchange topicExchange) {
+        return BindingBuilder.bind(rabbitTopicDemo2Queue).to(topicExchange).with(DemoConstants.RABBIT_TOPIC_DEMO_ROUTING_KEY);
     }
 }

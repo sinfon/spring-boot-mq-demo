@@ -52,4 +52,9 @@ public class DemoListener {
     public void rabbitTopicDemoQueueListener(User user) {
         log.info("DemoListener ... ... rabbitTopicDemoQueueListener, User: {}", JsonUtil.stringfy(user));
     }
+
+    @RabbitListener(queues = DemoConstants.RABBIT_TOPIC_DEMO2_QUEUE)
+    public void rabbitTopicDemo2QueueListener(User user) {
+        log.info("DemoListener ... ... rabbitTopicDemo2QueueListener, User: {}", JsonUtil.stringfy(user));
+    }
 }
